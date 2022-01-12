@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입 - 채워니블로그</title>
+        <link rel="stylesheet" href="../style/index.css" />
+        <link rel="stylesheet" href="../style/member.css" />
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <!-- 페이지 로고, 메뉴, 로그인/회원가입 -->
+                <a href="../index.html"><div id="logo"></div></a>
+                <div id="nav-wrap">
+                    <ul id="nav">
+                        <a href="../index.html?menu=1"
+                            ><li class="menu">Menu1</li></a
+                        >
+                        <a href="../index.html?menu=2"
+                            ><li class="menu">Menu2</li></a
+                        >
+                        <a href="../index.html?menu=3"
+                            ><li class="menu">Menu3</li></a
+                        >
+                        <a href="../index.html?menu=4"
+                            ><li class="menu">Menu4</li></a
+                        >
+                        <a href="../index.html?menu=5"
+                            ><li class="menu">Menu5</li></a
+                        >
+                    </ul>
+                </div>
+                <ul id="login">
+                    <!-- 로그인 전 -->
+                    <a href="./login.html"
+                        ><li class="login-inner logout">로그인</li></a
+                    >
+                    <a href="./join.html"
+                        ><li class="login-inner logout">회원가입</li></a
+                    >
+
+                    <!-- 로그인 후 -->
+                    <a href="./modify.html"
+                        ><li class="login-inner login">정보수정</li></a
+                    >
+                    <li class="login-inner login" onclick="logout()">
+                        로그아웃
+                    </li>
+                </ul>
+            </div>
+            <div id="container">
+                <div id="title">회원가입</div>
+                <div id="content">
+                    <form
+                        id="joinForm"
+                        method="get"
+                        action="./joinCheck.html"
+                        onsubmit="return formCheck();"
+                    >
+                        <p id="label">이름</p>
+                        <input
+                            name="name"
+                            id="name"
+                            type="text"
+                            onkeyup="nameCheck()"
+                        />
+                        <p id="nameCheckText" class="textCheck"></p>
+
+                        <p id="label">아이디</p>
+                        <input
+                            name="userid"
+                            id="userid"
+                            type="text"
+                            onkeyup="useridCheck()"
+                        />
+                        <p id="useridCheckText" class="textCheck"></p>
+
+                        <p id="label">비밀번호</p>
+                        <input
+                            name="userpw"
+                            id="userpw"
+                            type="password"
+                            onkeyup="userpwCheck()"
+                        />
+                        <p id="userpwCheckText" class="textCheck"></p>
+
+                        <p id="label">비밀번호 재확인</p>
+                        <input
+                            name="userpw_check"
+                            id="userpw_check"
+                            type="password"
+                            onkeyup="userpw_checkCheck()"
+                        />
+                        <p id="userpw_checkCheckText" class="textCheck"></p>
+
+                        <p id="label">이메일</p>
+                        <input
+                            name="email"
+                            id="email"
+                            type="email"
+                            onkeyup="emailCheck()"
+                        />
+                        <p id="emailCheckText" class="textCheck"></p>
+
+                        <p id="label">생년월일</p>
+                        <div id="birth-wrap">
+                            <select id="year" name="year"></select>
+                            <select id="month" name="month"></select>
+                            <select id="date" name="date"></select>
+                        </div>
+                        <p id="birthCheckText" class="textCheck"></p>
+
+                        <p id="label">성별</p>
+                        <select id="gender" name="gender">
+                            <option value="">성별</option>
+                            <option value="male">남성</option>
+                            <option value="female">여성</option>
+                        </select>
+                        <p id="genderCheckText" class="textCheck"></p>
+
+                        <input id="btn-submit" type="submit" value="가입하기" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../urls.js"></script>
+    <script type="text/javascript" src="../js/join.js"></script>
+</html>

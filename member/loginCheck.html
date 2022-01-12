@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+    </head>
+    <body></body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../urls.js"></script>
+    <script>
+        function getParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null
+                ? ""
+                : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        const userid = getParameter("userid");
+        const userpw = getParameter("userpw");
+
+        $.ajax({
+            type: "post",
+            url: url + "/member/login",
+            data: {
+                userid: userid,
+                userpw: userpw,
+            },
+            dataType: "JSON",
+            success: function (json) {
+                console.log(json.result);
+                if (json.result == 200) {
+                    // 로그인 성공
+                    // 세션에다가 로그인 정보를 입력
+                    sessionStorage.setItem("userid", userid);
+                    sessionStorage.setItem("userkey", json.userkey);
+                    location.href = "../index.html";
+                } else if (json.result == 400) {
+                    // 로그인 실패
+                    history.back();
+                } else {
+                    // 진짜 알수없는 에러
+                    history.back();
+                }
+            },
+            error: function (xhr, status, e) {
+                console.log(e);
+            },
+        });
+    </script>
+</html>

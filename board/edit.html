@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>- 채워니블로그</title>
+        <link rel="stylesheet" href="../style/index.css" />
+        <link rel="stylesheet" href="../style/board.css" />
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <!-- 페이지 로고, 메뉴, 로그인/회원가입 -->
+                <a href="../index.html"><div id="logo"></div></a>
+                <div id="nav-wrap">
+                    <ul id="nav">
+                        <a href="../index.html?menu=1"
+                            ><li class="menu">Menu1</li></a
+                        >
+                        <a href="../index.html?menu=2"
+                            ><li class="menu">Menu2</li></a
+                        >
+                        <a href="../index.html?menu=3"
+                            ><li class="menu">Menu3</li></a
+                        >
+                        <a href="../index.html?menu=4"
+                            ><li class="menu">Menu4</li></a
+                        >
+                        <a href="../index.html?menu=5"
+                            ><li class="menu">Menu5</li></a
+                        >
+                    </ul>
+                </div>
+                <ul id="login">
+                    <!-- 로그인 전 -->
+                    <a href="../member/login.html"
+                        ><li class="login-inner logout">로그인</li></a
+                    >
+                    <a href="../member/join.html"
+                        ><li class="login-inner logout">회원가입</li></a
+                    >
+
+                    <!-- 로그인 후 -->
+                    <a href="../member/modify.html"
+                        ><li class="login-inner login">정보수정</li></a
+                    >
+                    <li class="login-inner login" onclick="logout()">
+                        로그아웃
+                    </li>
+                </ul>
+            </div>
+            <div id="container">
+                <div id="content">
+                    <form
+                        method="get"
+                        action="./editCheck.html"
+                        onsubmit="return formCheck()"
+                    >
+                        <input type="hidden" name="postkey" id="postkey_" />
+                        <input type="hidden" name="userkey" id="userkey_" />
+                        <table id="board-detail">
+                            <tr>
+                                <td id="postkey"></td>
+                                <td id="title">
+                                    <input type="text" name="title" />
+                                </td>
+                                <td id="name"></td>
+                            </tr>
+                            <tr>
+                                <td id="description" colspan="4">
+                                    <textarea name="description"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="btn-wrap">
+                            <input type="submit" value="수정" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../urls.js"></script>
+    <script type="text/javascript" src="../js/edit.js"></script>
+</html>
