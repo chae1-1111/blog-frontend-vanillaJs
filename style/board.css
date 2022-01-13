@@ -1,7 +1,9 @@
-#board-num {
-    margin-top: 100px;
-    margin-left: 8%;
-    color: #777;
+#board-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 85%;
+    margin: 100px auto 15px;
 }
 
 #board {
@@ -89,6 +91,33 @@
 }
 
 #btn-wrap {
-    margin-left: 8%;
-    margin-top: 10px;
+    width: 85%;
+    margin: 10px auto 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#btn-hidden {
+    display: none;
+}
+
+#pages {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#pages a {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#board-num {
+    color: #777;
+}
+
+#btn-post {
+    padding: 3px 7px;
+    display: none;
 }

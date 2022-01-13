@@ -32,8 +32,9 @@ $.ajax({
             posttime.innerHTML = json.post.modifytime;
             description.innerHTML = json.post.description;
 
-            if (sessionStorage.getItem("userkey") !== userkey) {
-                document.getElementById("btn-wrap").style.display = "none";
+            if (sessionStorage.getItem("userkey") == userkey) {
+                document.getElementById("btn-hidden").style.display =
+                    "inline-block";
             }
         } else if (json.result == 201) {
             // 게시글 번호와 일치하는 데이터가 없음
@@ -51,4 +52,46 @@ $.ajax({
 
 const editPost = () => {
     location.href = "./edit.html?postkey=" + postkey + "&userkey=" + userkey;
+};
+
+const arUser = [1, 3, 4, 5, 6];
+
+const deletePost = () => {
+    $.ajax({
+        type: "post",
+        url: url + "/board/delete",
+        data: {
+            userkey: sessionStorage.getItem("userkey"),
+            postkey: postkey,
+        },
+        dataType: "JSON",
+        success: function (json) {
+            if (json.result == 200) {
+                for (let i = 0; i < arUser.length; i++) {
+                    const element = arUser[i];
+                    if (element == userkey) {
+                        location.href = "../index.html?menu=" + (i + 1);
+                    }
+                }
+            } else if (json.result == 201) {
+                // 게시글 번호와 일치하는 데이터가 없음
+                alert("삭제할 수 없는 글입니다!");
+            } else {
+                // 진짜 알수없는 에러
+                history.back();
+            }
+        },
+        error: function (xhr, status, e) {
+            console.log(e);
+        },
+    });
+};
+
+const toList = () => {
+    for (let i = 0; i < arUser.length; i++) {
+        const element = arUser[i];
+        if (element == userkey) {
+            location.href = "../index.html?menu=" + (i + 1);
+        }
+    }
 };

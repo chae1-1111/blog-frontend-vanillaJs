@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+    </head>
+    <body></body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../urls.js"></script>
+    <script>
+        function getParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null
+                ? ""
+                : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        const data = {
+            userkey: getParameter("userkey"),
+            name: getParameter("name"),
+            title: getParameter("title"),
+            description: getParameter("description"),
+        };
+
+        $.ajax({
+            type: "post",
+            url: url + "/board/post",
+            data: data,
+            dataType: "JSON",
+            success: function (json) {
+                if (json.result == 200) {
+                    location.href = "../index.html?userkey=" + data.userkey;
+                } else if (json.result == 201) {
+                    history.back();
+                } else {
+                    // 진짜 알수없는 에러
+                    history.back();
+                }
+            },
+            error: function (xhr, status, e) {
+                console.log(e);
+            },
+        });
+    </script>
+</html>

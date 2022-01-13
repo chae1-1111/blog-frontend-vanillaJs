@@ -52,32 +52,30 @@
             </div>
             <div id="container">
                 <div id="content">
-                    <table id="board-detail">
-                        <tr>
-                            <td id="postkey"></td>
-                            <td id="title"></td>
-                            <td id="name"></td>
-                            <td id="posttime"></td>
-                        </tr>
-                        <tr>
-                            <td id="description" colspan="4"></td>
-                        </tr>
-                    </table>
-                    <div id="btn-wrap">
-                        <input type="button" value="목록" onclick="toList()" />
-                        <div id="btn-hidden">
-                            <input
-                                type="button"
-                                value="수정"
-                                onclick="editPost()"
-                            />
-                            <input
-                                type="button"
-                                value="삭제"
-                                onclick="deletePost()"
-                            />
+                    <form
+                        method="get"
+                        action="./postCheck.html"
+                        onsubmit="return formCheck()"
+                    >
+                        <input type="hidden" name="userkey" id="userkey_" />
+                        <input type="hidden" name="name" id="name_" />
+                        <table id="board-detail">
+                            <tr>
+                                <td id="title">
+                                    <input type="text" name="title" />
+                                </td>
+                                <td id="name"></td>
+                            </tr>
+                            <tr>
+                                <td id="description" colspan="4">
+                                    <textarea name="description"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="btn-wrap">
+                            <input type="submit" value="수정" />
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -85,5 +83,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript" src="../urls.js"></script>
-    <script type="text/javascript" src="../js/detail.js"></script>
+    <script type="text/javascript" src="../js/post.js"></script>
 </html>
